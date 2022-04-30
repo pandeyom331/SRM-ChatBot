@@ -1,3 +1,4 @@
+
 import random
 import json
 import pickle
@@ -5,10 +6,10 @@ import numpy as np
 
 import nltk
 from nltk.stem import WordNetLemmatizer
-# from nltk.stem import WordNetLemmatizer
-# import nltk
+nltk.download('punkt')
 nltk.download('wordnet')
 from tensorflow.keras.models import load_model
+
 lemmatizer = WordNetLemmatizer()
 
 intents = json.loads(open('intents.json').read())
@@ -54,10 +55,8 @@ def get_response(intents_list,intents_json):
             break
     return result
 
-print("|============= Welcome to SRM-Chatbot System! =============|")
-print("|============================== Feel Free ============================|")
-print("|================================== To ===============================|")
-print("|=============== Ask your any query about our college ================|")
+print("|============= Welcome to College Equiry Chatbot System! =============|")
+
 while True:
     message = input("| You: ")
     if message == "bye" or message == "Goodbye":
@@ -70,4 +69,4 @@ while True:
     else:
         ints = predict_class(message)
         res = get_response(ints, intents)
-        print("\n|Bot:", res)
+        print("| Bot:", res)
